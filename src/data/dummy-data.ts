@@ -18,7 +18,7 @@ export const data = {
     {
       title: "Preferences",
       icon: "Settings",
-      href: "/dashboard/settings",
+      href: "/dashboard/preferences",
     },
     {
       title: "Generate content",

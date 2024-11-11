@@ -1,2 +1,8 @@
+# ====== Configurable user settings ======
 SITENAME = ""
 SITESUBNAME = ""
+
+# ====== App settings ======
+GITHUB_PAT = 
+GITHUB_OWNER=
+GITBUB_REPO=
