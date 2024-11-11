@@ -1,15 +1,22 @@
-import Navbar from "@/app/components/nav/Navbar";
+import AdminSidebar from "@/components/dashboard/Admin-Sidebar";
+import Navbar from "@/components/nav/Navbar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function DashboardLayout({ children }: Readonly<{
   children: React.ReactNode;
 }>) {
 
   return (
-    <main>
-      <Navbar />
-      <h1>Dashboard</h1>
-      {children}
-    </main>
+    <SidebarProvider>
+      <AdminSidebar />
+      <main className="w-full">
+        <Navbar>
+          <SidebarTrigger variant={"secondary"} />
+        </Navbar>
+        {children}
+      </main>
+    </SidebarProvider>
+
   )
 
 }
