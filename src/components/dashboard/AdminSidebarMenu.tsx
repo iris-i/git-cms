@@ -6,28 +6,29 @@ import {
   Newspaper,
   Settings,
   Sparkles,
-  type LucideIcon,
 } from "lucide-react"
 
 interface MenuItems {
   menuitems:
   {
     title: string;
-    icon?: string;
+    icon: string;
     href: string;
   }[]
 }
 
-const renderIcon = (icon: string) => {
+const renderIcon = (icon: string, color?: string, size?: number) => {
   switch (icon) {
     case "Home":
-      return <Home />
+      return <Home color={color} size={size} />
     case "Newspaper":
-      return <Newspaper />
+      return <Newspaper color={color} size={size} />
     case "Settings":
-      return <Settings />
+      return <Settings color={color} size={size} />
     case "Sparkles":
-      return <Sparkles />
+      return <Sparkles color={color} size={size} />
+    default:
+      return <Folder color={color} size={size} />
   }
 
 }
@@ -38,8 +39,8 @@ const AdminSidebarMenu = ({ menuitems }: MenuItems) => {
       {menuitems.map((item, index) => {
         return (
           <SidebarMenuItem key={`${index}-${item.title}`}>
-            <SidebarMenuButton tooltip={item.title}>
-              {item.icon ? renderIcon(item.icon) : <Folder />}
+            <SidebarMenuButton tooltip={item.title} size="lg" className="text-base">
+              {renderIcon(item.icon, `hsla(var(--primary))`, 40)}
               <Link href={item.href}>{item.title}</Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
