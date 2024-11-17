@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import { Lora, Nunito_Sans } from 'next/font/google';
+
+const lora = Lora({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-lora'
+})
+
+const nunito_sans = Nunito_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-nunitosans'
+})
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,10 +29,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${lora.variable} ${nunito_sans.variable} antialiased`}
       >
         {children}
       </body>
     </html>
   );
 }
+
+
+11 / 13 / 2024	7.07
+
+5.49 - NSF - 1138: Troubleshooting pipeline builds, code review updates & generating a stable environment for testing the new feedback form.Team comms, coordinating demo and prod release QA steps for the touchpoints feedback form, trobleshooting focusable links not working in Firefox, Legacy 404 ticket requirements conversations, |
+  1.08 - O & M ticket review |
+    0.25 - New.NSF.gov Team Scrum - Front - End |
+      0.25 - new.NSF.gov Team - O & M Refinement |
