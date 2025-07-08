@@ -38,7 +38,7 @@ const AdminSidebarMenu = ({ menuitems }: MenuItems) => {
     <SidebarMenu>
       {menuitems.map((item, index) => {
         return (
-          <SidebarMenuItem key={`${index}-${item.title}`}>
+          <SidebarMenuItem key={`${index}-${item.title}`} className="py-1">
             <SidebarMenuButton tooltip={item.title} className="text-base my-[2px]">
               {renderIcon(item.icon, `hsla(var(--primary))`, 40)}
               <Link href={item.href}>{item.title}</Link>

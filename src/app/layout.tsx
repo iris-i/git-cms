@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Lora, Nunito_Sans } from 'next/font/google';
+import { Toaster } from "@/components/ui/toaster";
 
 const lora = Lora({
   subsets: ['latin'],
@@ -31,16 +32,9 @@ export default function RootLayout({
       <body
         className={`${lora.variable} ${nunito_sans.variable} antialiased`}
       >
+        <Toaster />
         {children}
       </body>
     </html>
   );
 }
-
-
-11 / 13 / 2024	7.07
-
-5.49 - NSF - 1138: Troubleshooting pipeline builds, code review updates & generating a stable environment for testing the new feedback form.Team comms, coordinating demo and prod release QA steps for the touchpoints feedback form, trobleshooting focusable links not working in Firefox, Legacy 404 ticket requirements conversations, |
-  1.08 - O & M ticket review |
-    0.25 - New.NSF.gov Team Scrum - Front - End |
-      0.25 - new.NSF.gov Team - O & M Refinement |

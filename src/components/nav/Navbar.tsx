@@ -5,11 +5,10 @@ import { Sun } from "lucide-react";
 
 function Navbar({ children }: { children: React.ReactNode }) {
   return (
-    <nav className="bg-primary flex justify-between text-primary-foreground py-2 px-5 text-xl">
+    <div className="flex py-2 px-5 text-xl justify-between text-primary-foreground">
       {children}
-      <Link href="/dashboard">Admin Dashboard</Link>
       <Sun />
-    </nav>
+    </div>
   );
 }
 

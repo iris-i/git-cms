@@ -23,7 +23,7 @@
     --destructive-foreground: 210 20% 98%;
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 262.1 83.3% 57.8%;
+    --ring: var(--primary);
     --radius: 0.5rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -107,3 +107,66 @@
     @apply font-header;
   }
 }
+
+@layer components {
+  .dashboard-container {
+    @apply w-full max-w-5xl mx-auto px-8 py-4 bg-background shadow-sm rounded-lg border border-gray-100;
+  }
+
+  .dashboard-bg {
+    @apply h-[30vh] bg-gradient-to-b from-primary via-20% via-primary/80 to-primary/60 overflow-visible;
+  }
+}
+
+.grid-pattern {
+  --css-pattern-size: 51px;
+  /* control the size*/
+  --css-pattern-color-1: #f5f5f5;
+  --css-pattern-color-2: hsla(var(--primary)/10%);
+
+  --css-pattern-gradient: #0000 90deg, var(--css-pattern-color-1) 0;
+  background:
+    conic-gradient(from 90deg at 2px 2px, var(--css-pattern-gradient)),
+    conic-gradient(from 90deg at 1px 1px, var(--css-pattern-gradient)),
+    var(--css-pattern-color-2);
+  background-size: var(--css-pattern-size) var(--css-pattern-size), calc(var(--css-pattern-size)/5) calc(var(--css-pattern-size)/5);
+}
+
+.wave-pattern {
+  --css-pattern-size: 7px;
+  /* control the size*/
+  --css-pattern-color-1: #ffffff;
+  --css-pattern-color-2: hsla(var(--primary)/10%);
+
+  --_s: 37.5% 12.5% at 62.5%;
+  --css-pattern-gradient: 34% 99%, #0000 101%;
+  --g1: radial-gradient(var(--_s) 100%, #0000 32%, var(--css-pattern-color-1) var(--css-pattern-gradient));
+  --g2: radial-gradient(var(--_s) 0, #0000 32%, var(--css-pattern-color-1) var(--css-pattern-gradient));
+  --g3: radial-gradient(var(--_s) 100%, #0000 32%, var(--css-pattern-color-2) var(--css-pattern-gradient));
+  --g4: radial-gradient(var(--_s) 0, #0000 32%, var(--css-pattern-color-2) var(--css-pattern-gradient));
+  background:
+    var(--g1),
+    var(--g2) 0 calc(3*var(--css-pattern-size)),
+    var(--g3) var(--css-pattern-size) calc(3*var(--css-pattern-size)),
+    var(--g4) var(--css-pattern-size) calc(6*var(--css-pattern-size)),
+    var(--g1) calc(2*var(--css-pattern-size)) calc(6*var(--css-pattern-size)),
+    var(--g2) calc(2*var(--css-pattern-size)) calc(9*var(--css-pattern-size)),
+    var(--g3) calc(3*var(--css-pattern-size)) calc(9*var(--css-pattern-size)),
+    var(--g4) calc(3*var(--css-pattern-size)) 0,
+    repeating-linear-gradient(var(--css-pattern-color-1) 0 25%, var(--css-pattern-color-2) 0 50%);
+  background-size: calc(4*var(--css-pattern-size)) calc(12*var(--css-pattern-size));
+}
+
+
+/*  Palettes
+--primary-100:#B4D3DA;
+--primary-200:#97b5bc;
+--primary-300:#56737a;
+--accent-100:#0C1821;
+--accent-200:#8a96a3;
+--text-100:#0C1821;
+--text-200:#323e48;
+--bg-100:#F4F1EF;
+--bg-200:#eae7e5;
+--bg-300:#c1bebd; */
+

@@ -1,0 +1,55 @@
+.stripePattern {
+  --css-pattern-size: 3px;
+  --css-pattern-color-1: #f5f5f5;
+  --css-pattern-color-2: #d0e6a5;
+  --css-pattern-gradient: var(--css-pattern-color-1) 50%, var(--css-pattern-color-2) 50%;
+  background: linear-gradient(var(--css-pattern-gradient));
+  background-size: var(--css-pattern-size) var(--css-pattern-size);
+}
+
+.polkadot {
+  --css-pattern-size: 10px;
+  --css-pattern-color-1: #ffffff;
+  --css-pattern-color-2: #2d89ef;
+  background: radial-gradient(circle, var(--css-pattern-color-2) 20%, transparent 20%);
+  background-size: var(--css-pattern-size) var(--css-pattern-size);
+}
+
+.grid_pattern {
+  --css-pattern-size: 20px;
+  --css-pattern-color-1: #eaeaea;
+  --css-pattern-color-2: transparent;
+
+  background:
+    linear-gradient(var(--css-pattern-color-1) 1px, var(--css-pattern-color-2) 1px),
+    linear-gradient(90deg, var(--css-pattern-color-1) 1px, var(--css-pattern-color-2) 1px);
+  background-size: var(--css-pattern-size) var(--css-pattern-size);
+}
+
+/* Graph Sheet */
+.graph_sheet_pattern {
+  --css-pattern-size: 20px;
+  --css-pattern-color-1: #d3d3d3;
+  --css-pattern-color-2: transparent;
+
+  background:
+    linear-gradient(var(--css-pattern-color-1) 1px, var(--css-pattern-color-2) 1px),
+    linear-gradient(90deg, var(--css-pattern-color-1) 1px, var(--css-pattern-color-2) 1px);
+  background-size: var(--css-pattern-size) var(--css-pattern-size);
+}
+
+/* Minimal Polka Dots with More Spacing */
+.polka_dot_pattern {
+  --css-pattern-size: 40px;
+  /* Increased size for more spacing */
+  --css-pattern-color-1: transparent;
+  --css-pattern-color-2: #aaaaaa;
+
+  background: radial-gradient(circle, var(--css-pattern-color-2) 10%, var(--css-pattern-color-1) 10%);
+  background-size: var(--css-pattern-size) var(--css-pattern-size);
+}
+
+background: radial-gradient(circle, transparent 14%, #f3f3f4 15%, #f3f3f4 25%, transparent 26%);
+        background-size: 2em 2em;
+        background-color: #ffffff;
+        opacity: 1
