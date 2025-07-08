@@ -23,6 +23,8 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { useToast } from '@/hooks/use-toast'
+import { useState } from 'react'
+import axios from 'axios';
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -47,6 +49,8 @@ const formSchema = z.object({
 
 
 export default function CreatePostForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -61,13 +65,34 @@ export default function CreatePostForm() {
 
   const { toast } = useToast()
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    toast({
-      title: 'Post created successfully',
-      description: 'Your post has been saved as a draft.',
-      variant: 'success',
-    })
-    console.log(JSON.stringify(values, null, 2))
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    let { title, author, image, intro, body, tags } = values;
+    try {
+      const response = await axios.post('/api/createPost', {
+        title,
+        author,
+        status: 'draft',
+        body,
+        slug: title.toLowerCase().replace(/\s+/g, '-'),
+        hero: image,
+        tag: tags,
+      });
+
+      toast({
+        title: 'Post created successfully',
+        description: response.data.message,
+        variant: 'success',
+      });
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: error.response?.data?.error || error.message,
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -186,10 +211,19 @@ export default function CreatePostForm() {
             )}
           />
           <div className="flex justify-end space-x-4 pt-4 max-w-4xl mx-auto">
-            <Button variant="outline" type="button" className="bg-white text-gray-700 border-gray-300 hover:bg-gray-100">
+            <Button
+              variant="outline"
+              type="button"
+              className="bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+              disabled={isSubmitting}
+            >
               Save as Draft
             </Button>
-            <Button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white">
+            <Button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-600 text-white"
+              disabled={isSubmitting}
+            >
               Publish Post
             </Button>
           </div>
@@ -198,5 +232,3 @@ export default function CreatePostForm() {
     </div>
   )
 }
-
-``
